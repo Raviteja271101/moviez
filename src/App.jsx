@@ -73,7 +73,7 @@ const App = () => {
     try {
       // const response = await fetch("http://localhost:5000/api/search", {
       const response = await fetch(
-        "https://moviez-w8ph.onrender.com/api/search",
+        "https://moviez-backend-sak6.onrender.com/api/search",
         {
           method: "POST",
           headers: {
@@ -104,7 +104,7 @@ const App = () => {
   const getTrendingMovies = async () => {
     try {
       const res = await fetch(
-        "https://moviez-w8ph.onrender.com/api/trending-movies"
+        "https://moviez-backend-sak6.onrender.com/api/trending-movies"
       );
       // const res = await fetch("http://localhost:5000/api/trending-movies");
       if (!res.ok) {
