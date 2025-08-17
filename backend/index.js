@@ -4,11 +4,21 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({
-  origin: "https://moviez-phi.vercel.app",  // your deployed frontend
-  methods: ["GET", "POST"], 
-  credentials: true
-}));
+const corsOptions = {
+  origin: [
+    "https://moviez-phi.vercel.app",  // production
+    "http://localhost:3000"           // development
+  ],
+  methods: ["GET", "POST", "OPTIONS"], // Added OPTIONS for preflight
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 app.use(express.json());
 
 // Connect to MongoDB
