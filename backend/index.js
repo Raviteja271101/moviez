@@ -4,6 +4,10 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
+// Define PORT first
+const PORT = process.env.PORT || 5000;
+
 const corsOptions = {
   origin: [
     "https://moviez-phi.vercel.app",  // production
@@ -16,23 +20,28 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // ssl: true
 })
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ DB error:", err));
+.then(() => {
+  console.log("✅ Connected to MongoDB");
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+})
+.catch((err) => {
+  console.error("❌ MongoDB connection failed:", err.message);
+  process.exit(1);
+});
 
 // Sample route
 app.get("/api/test", (req, res) => {
   res.json({ message: "Frontend is connected to Backend!" });
 });
 
+// Schema & Model
 const searchTrendSchema = new mongoose.Schema({
   searchTerm: { type: String, required: true, unique: true, trim: true, lowercase: true },
   count: { type: Number, default: 1 },
@@ -42,13 +51,12 @@ const searchTrendSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
-// Create model
 const SearchTrend = mongoose.model("SearchTrend", searchTrendSchema);
+
+// Routes
 app.post("/api/search", async (req, res) => {
   const { searchTerm, movie_id, poster_url } = req.body;
-
-   console.log("Search saved:", { searchTerm, movie_id, poster_url });
-
+  console.log("Search saved:", { searchTerm, movie_id, poster_url });
 
   try {
     let trend = await SearchTrend.findOne({ searchTerm });
@@ -72,25 +80,16 @@ app.post("/api/search", async (req, res) => {
   }
 });
 
-
-
-
-app.get('/api/trending-movies', async (req, res) => {
+app.get("/api/trending-movies", async (req, res) => {
   try {
     const movies = await SearchTrend.find({})
       .sort({ count: -1 })
       .limit(10)
-      .lean(); // optional, returns plain JS objects
+      .lean();
 
     res.json(movies);
   } catch (error) {
     console.error("❌ Error fetching trending movies:", error);
     res.status(500).json({ error: "Server error" });
   }
-});
-
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
