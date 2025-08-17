@@ -100,8 +100,9 @@ const App = () => {
   const getTrendingMovies = async () => {
     try {
       const res = await fetch(
-        "https://your-backend.onrender.com/api/trending-movies"
-        // "http://localhost:5000/api/trending-movies");
+        // "https://your-backend.onrender.com/api/trending-movies"
+        // );
+        "http://localhost:5000/api/trending-movies"
       );
       if (!res.ok) {
         throw new Error(`HTTP error! Status:${res.status}`);
