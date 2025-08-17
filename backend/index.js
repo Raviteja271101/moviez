@@ -14,7 +14,8 @@ const corsOptions = {
     "http://localhost:3000"           // development
   ],
   methods: ["GET", "POST", "OPTIONS"], // Added OPTIONS for preflight
-  allowedHeaders: ["Content-Type", "Authorization"],
+  headers:{"Access-Control-Allow-Origin": "*"}, // Allow all origins
+  // allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
   optionsSuccessStatus: 200 // For legacy browser support
 };
