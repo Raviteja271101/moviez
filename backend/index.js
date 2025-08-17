@@ -5,23 +5,19 @@ require("dotenv").config();
 
 const app = express();
 
-// Define PORT first
-const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: [
-    "https://moviez-phi.vercel.app",  // production
-    "http://localhost:3000"           // development
-  ],
-  methods: ["GET", "POST", "OPTIONS"], // Added OPTIONS for preflight
-  headers:{"Access-Control-Allow-Origin": "*"}, // Allow all origins
-  // allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 200 // For legacy browser support
-};
+app.use(
+  cors({
+    origin: ["https://moviez-phi.vercel.app", "http://localhost:3000"], // allowed frontends
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true,
+  })
+);
 
-app.use(cors(corsOptions));
+
 app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
