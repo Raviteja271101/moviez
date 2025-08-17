@@ -71,17 +71,21 @@ const App = () => {
 
   const updateSearchCount = async (searchTerm, movie) => {
     try {
-      const response = await fetch("http://localhost:5000/api/search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          searchTerm,
-          movie_id: movie.id,
-          poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        }),
-      });
+      // const response = await fetch("http://localhost:5000/api/search", {
+      const response = await fetch(
+        "https://moviez-w8ph.onrender.com/api/search",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            searchTerm,
+            movie_id: movie.id,
+            poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -106,7 +110,7 @@ const App = () => {
       if (!res.ok) {
         throw new Error(`HTTP error! Status:${res.status}`);
       }
-      const data = (await res).json();
+      const data = await res.json();
       console.log(data);
       return data;
     } catch (err) {
