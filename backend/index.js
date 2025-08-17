@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://moviez-phi.vercel.app", "http://localhost:3000"], // allowed frontends
+    origin: ["https://moviez-phi.vercel.app"], // allowed frontends
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   })
@@ -20,10 +20,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("✅ Connected to MongoDB");
   app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
