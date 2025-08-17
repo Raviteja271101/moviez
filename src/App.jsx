@@ -182,7 +182,7 @@ const App = () => {
         ) : errorMessage ? (
           <p className="text-red-500">{errorMessage}`</p>
         ) : (
-          <ul className="flex flex-wrap lg:max-w-[1320px] justify-center md:max-w-4xl  max-w-sm w-full gap-4">
+          <ul className="flex flex-wrap lg:max-w-[1320px] justify-center md:max-w-4xl sm:max-w-3xl max-w-xl w-full gap-4">
             {movieList.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
