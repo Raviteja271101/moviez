@@ -138,19 +138,21 @@ const App = () => {
           src="/images/hero-img.png"
           alt=""
         />
-        <h1 className="text-white text-4xl mx-auto text-center w-full max-w-[405px]  lg:max-w-[500px]">
-          Find{" "}
+        <h1 className="text-white text-4xl mx-auto text-center w-full max-w-[405px]  lg:max-w-[500px] font-[600]">
+          Trending{" "}
           <span className="bg-gradient-to-r from-[#D6C7FF] to-[#AB8BFF]  bg-clip-text text-transparent">
             Movies
-          </span>{" "}
-          You’ll Love Without the Hassle
+          </span>
+          , Tailored for You
         </h1>
         <Search search={search} setSearch={setSearch} />
         {/* <h1 className="text-white">{search}</h1> */}
 
         {Array.isArray(trendingMovies) && trendingMovies.length > 0 && (
           <div className="trending xl:max-w-[1320px] lg:max-w-4xl md:max-w-3xl sm:max-w-[120vw] max-w-[96vw] mx-auto mt-6">
-            <h2 className="text-white mb-4 pl-4">Top 10 Trending Movies</h2>
+            <h2 className="text-white mb-4 pl-4 text-lg font-[500]">
+              Top 10 Trending Movies
+            </h2>
             <div className=" w-full overflow-x-auto hide-scrollbar-x px-5 overflow-y-hidden ">
               <ul className=" flex gap-10 px-10 py-4  min-w-full">
                 {trendingMovies.map((movie, index) => (
@@ -174,8 +176,10 @@ const App = () => {
         )}
       </div>
 
-      <section className="flex flex-col justify-center mx-auto py-12  items-center">
-        <h2 className="text-white mb-4">ALL MOVIES</h2>
+      <section className="flex flex-col justify-center mx-auto py-12 pl-8 place-items-start">
+        <h2 className="text-white text-lg mb-4 font-[500]">
+          Find What to Watch in Seconds
+        </h2>
         {/* <h1 className="text-white">{{ fetchTrendingMovies. }}</h1> */}
         {isloading ? (
           <Spinner />
