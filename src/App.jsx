@@ -149,13 +149,13 @@ const App = () => {
         {/* <h1 className="text-white">{search}</h1> */}
 
         {Array.isArray(trendingMovies) && trendingMovies.length > 0 && (
-          <div className="trending xl:max-w-[1320px] lg:max-w-4xl md:max-w-3xl sm:max-w-[120vw] max-w-[96vw] mx-auto px-8 mt-6">
+          <div className="trending xl:max-w-[1320px] lg:max-w-4xl md:max-w-3xl sm:max-w-[120vw] max-w-[96vw] mx-auto mt-6">
             <h2 className="text-white mb-4 pl-4">Top 10 Trending Movies</h2>
             <div className=" w-full overflow-x-auto hide-scrollbar-x px-5 overflow-y-hidden ">
               <ul className=" flex gap-10 px-10 py-4  min-w-full">
                 {trendingMovies.map((movie, index) => (
                   <li
-                    className="flex flex-row  min-w-[220px] lg:min-w-[240px]  relative  hover:scale-110 duration-300"
+                    className="flex flex-row min-w-[200px]   md:min-w-[220px] lg:min-w-[240px]  relative  hover:scale-110 duration-300"
                     key={movie._id}
                   >
                     <p className="bebas flex  items-end h-fit min-h-[200px] w-[100px] absolute -bottom-9 -left-13 z-0">
