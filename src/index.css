@@ -28,7 +28,7 @@ body{
 .bebas{
 font-family: 'Bebas Neue', sans-serif;
 font-size: 10rem;
-font-weight: 900;
+/* font-weight: 900; */
 color: rgb(3 0 20);
 /* color: transparent; */
 -webkit-text-stroke: 1px rgb(255, 255, 255); 
