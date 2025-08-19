@@ -153,7 +153,7 @@ const App = () => {
             <h2 className="text-white mb-4 pl-4 text-lg font-[500]">
               Top 10 Trending Movies
             </h2>
-            <div className=" w-full overflow-x-auto hide-scrollbar-x px-5 overflow-y-hidden ">
+            <div className=" w-full overflow-x-auto hide-scrollbar-x px-5 overflow-y-hidden max-w-[1200px] ">
               <ul className=" flex gap-10 px-10 py-4  min-w-full">
                 {trendingMovies.map((movie, index) => (
                   <li
@@ -176,8 +176,8 @@ const App = () => {
         )}
       </div>
 
-      <section className="flex flex-col justify-center mx-auto py-12 pl-8 place-items-start">
-        <h2 className="text-white text-lg mb-4 font-[500]">
+      <section className="flex flex-col justify-center mx-auto py-12  place-items-start">
+        <h2 className="text-white text-lg mb-4 font-[500] xl:pl-[4em] lg:pl-[4.5em] md:pl-[3em] pl-8">
           Find What to Watch in Seconds
         </h2>
         {/* <h1 className="text-white">{{ fetchTrendingMovies. }}</h1> */}
