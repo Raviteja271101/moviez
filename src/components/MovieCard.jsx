@@ -5,10 +5,11 @@ const MovieCard = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col lg:max-w-[280px] md:max-w-[230px] sm:max-w-[190px] max-w-[150px] w-full rounded-md  gap-2  p-4 bg-[#070f2c] ">
+      <div className="flex flex-col lg:max-w-[280px] md:max-w-[230px] sm:max-w-[190px] max-w-[150px] w-full rounded-md  gap-2 md:p-4 p-2 bg-[#070f2c] ">
         {/* <img src={poster_path} alt="" /> */}
 
         <img
+          className="rounded"
           src={
             poster_path
               ? `https://image.tmdb.org/t/p/w500/${poster_path}`

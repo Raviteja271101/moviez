@@ -162,7 +162,7 @@ const App = () => {
                       {index + 1}
                     </p>
                     <img
-                      className="max-h-[220px] max-w-[170px] lg:max-h-[260px]  w-full h-full rounded-xl z-10"
+                      className="max-h-[220px] max-w-[150px] lg:max-h-[260px]  w-full h-full rounded-xl z-10"
                       src={movie.poster_url}
                       alt={movie.searchTerm}
                     />
