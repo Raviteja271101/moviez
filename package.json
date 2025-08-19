@@ -3,16 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+   "main": "backend/server.js",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+     "start": "node backend/server.js"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
+   "@tailwindcss/vite": "^4.1.11",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
     "express": "^4.21.2",
     "mongodb": "^6.18.0",
+    "mongoose": "^8.17.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-use": "^17.6.0",
